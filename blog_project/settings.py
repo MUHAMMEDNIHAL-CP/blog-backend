@@ -9,18 +9,19 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
 import dj_database_url
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-secret-key')
-DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 from pathlib import Path
 from datetime import timedelta
-import os
+
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blog_project.settings')
 
 application = get_wsgi_application()
 
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-secret-key')
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
